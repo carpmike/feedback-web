@@ -6,10 +6,9 @@ import grails.rest.Resource;
 class Feedback {
 
 	String text
-	
-	static belongsTo = [owner:Person]
-	static hasOne = [category:Category]
-	
+	Category category 
+	Person person 
+		
     static constraints = {
 		text blank:false
     }

@@ -1,3 +1,7 @@
+import java.io.ObjectOutputStream.DebugTraceInfoStack;
+
+import javax.swing.plaf.metal.MetalBorders.WarningDialogBorder;
+
 // locations to search for config files that get merged into the main config;
 // config files can be ConfigSlurper scripts, Java properties files, or classes
 // in the classpath in ConfigSlurper format
@@ -95,11 +99,9 @@ environments {
 
 // log4j configuration
 log4j = {
-    // Example of changing the log pattern for the default console appender:
-    //
-    //appenders {
-    //    console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
-    //}
+    appenders {
+        console name:'stdout', layout:pattern(conversionPattern: '%d [%t] %-5p %c - %m%n'), threshold: org.apache.log4j.Level.DEBUG
+    }
 
     error  'org.codehaus.groovy.grails.web.servlet',        // controllers
            'org.codehaus.groovy.grails.web.pages',          // GSP
@@ -112,4 +114,16 @@ log4j = {
            'org.springframework',
            'org.hibernate',
            'net.sf.ehcache.hibernate'
+		   
+	warn	'org.mortbay.log'
+	
+	debug	'grails.app'
+	
+	root {
+		error 'stdout'
+		info 'stdout'
+		warn 'stdout'
+		debug 'stdout'
+		additivity = true
+	 }
 }

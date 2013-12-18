@@ -4,7 +4,7 @@ import grails.rest.Resource;
 
 @Resource(uri='/persons')
 class Person {
-
+	
 	String firstName
 	String lastName
 	
