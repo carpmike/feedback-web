@@ -2,7 +2,7 @@ package feedback.web
 
 import grails.rest.Resource;
 
-@Resource(uri='/categories')
+@Resource(uri='/categories', formats=['json', 'xml'])
 class Category {
 
 	static hasMany = [feedbacks: Feedback]

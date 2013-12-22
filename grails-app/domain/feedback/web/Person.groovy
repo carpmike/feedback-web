@@ -2,7 +2,7 @@ package feedback.web
 
 import grails.rest.Resource;
 
-@Resource(uri='/persons')
+@Resource(uri='/persons', formats=['json', 'xml'])
 class Person {
 	
 	String firstName
