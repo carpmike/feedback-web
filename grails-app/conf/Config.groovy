@@ -66,6 +66,18 @@ grails {
             //'text/html' = 'html'
         }
     }
+
+	mail {
+	  host = "smtp.gmail.com"
+	  port = 465
+	  username = "carpmike@gmail.com"
+	  password = "Gm1l0c0mAe"
+	  props = ["mail.smtp.auth":"true",
+			   "mail.smtp.socketFactory.port":"465",
+			   "mail.smtp.socketFactory.class":"javax.net.ssl.SSLSocketFactory",
+			   "mail.smtp.socketFactory.fallback":"false"]
+	  from="server@yourhost.com"
+	}
 }
  
 grails.converters.encoding = "UTF-8"
@@ -100,30 +112,48 @@ environments {
 // log4j configuration
 log4j = {
     appenders {
-        console name:'stdout', layout:pattern(conversionPattern: '%d [%t] %-5p %c - %m%n'), threshold: org.apache.log4j.Level.DEBUG
+		environments {
+			development {
+				file name:'file', file:'logs/feedback-web.log', layout:pattern(conversionPattern: '%d [%t] %-5p %c - %m%n')
+			}
+		}
+        console name:'stdout', layout:pattern(conversionPattern: '%d [%t] %-5p %c - %m%n')
     }
-
-    error  'org.codehaus.groovy.grails.web.servlet',        // controllers
-           'org.codehaus.groovy.grails.web.pages',          // GSP
-           'org.codehaus.groovy.grails.web.sitemesh',       // layouts
-           'org.codehaus.groovy.grails.web.mapping.filter', // URL mapping
-           'org.codehaus.groovy.grails.web.mapping',        // URL mapping
-           'org.codehaus.groovy.grails.commons',            // core / classloading
-           'org.codehaus.groovy.grails.plugins',            // plugins
-           'org.codehaus.groovy.grails.orm.hibernate',      // hibernate integration
-           'org.springframework',
-           'org.hibernate',
-           'net.sf.ehcache.hibernate'
-		   
-	warn	'org.mortbay.log'
 	
+	error  'org.codehaus.groovy.grails.web.servlet',        // controllers
+	'org.codehaus.groovy.grails.web.pages',          // GSP
+	'org.codehaus.groovy.grails.web.sitemesh',       // layouts
+	'org.codehaus.groovy.grails.web.mapping.filter', // URL mapping
+	'org.codehaus.groovy.grails.web.mapping',        // URL mapping
+	'org.codehaus.groovy.grails.commons',            // core / classloading
+	'org.codehaus.groovy.grails.plugins',            // plugins
+	'org.codehaus.groovy.grails.orm.hibernate',      // hibernate integration
+	'org.springframework',
+	'org.hibernate',
+	'net.sf.ehcache.hibernate'
+	
+	warn	'org.mortbay.log'
+	 
 	debug	'grails.app'
 	
-	root {
-		error 'stdout'
-		info 'stdout'
-		warn 'stdout'
-		debug 'stdout'
-		additivity = true
-	 }
+	environments {
+		development {
+			root {
+				error 'file'
+				info 'file'
+				warn 'file'
+				debug 'file'
+				additivity = true
+			}
+		}
+		production {
+			root {
+				error 'stdout'
+				info 'stdout'
+				warn 'stdout'
+				debug 'stdout'
+				additivity = true
+			}
+		}
+	}
 }

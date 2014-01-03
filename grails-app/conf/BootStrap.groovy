@@ -1,4 +1,4 @@
-import feedback.web.Person
+import feedback.web.*
 
 class BootStrap {
 
@@ -12,6 +12,13 @@ class BootStrap {
 		new Person(firstName:"Quotes", lastName:"Stien").save()
 		new Person(firstName:"J", lastName:"G").save()
 		new Person(firstName:"Mr", lastName:"Commish").save()
+		
+		new Category(name:"Presentation").save()
+		new Category(name:"Communication").save()
+		new Category(name:"Work Product").save()
+		new Category(name:"Helping").save()
+		new Category(name:"Coaching").save()
+		new Category(name:"Listening").save()
     }
     def destroy = {
 		Person.findAll().each {
