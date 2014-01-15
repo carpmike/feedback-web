@@ -5,13 +5,13 @@ import grails.rest.Resource;
 @Resource(uri='/reminders', formats=['json', 'xml'])
 class Reminder {
 
-	Integer personId
-	Integer categoryId
-	String type
-	
+	Person person
+	Category category
+	FeedbackType type
+		
     static constraints = {
-		personId blank:false
-		categoryId blank:false
+		person blank:false
+		category blank:false
 		type blank:false
     }
 }

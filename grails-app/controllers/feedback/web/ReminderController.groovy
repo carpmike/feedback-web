@@ -26,6 +26,8 @@ class ReminderController extends RestfulController {
 			body message
 		}
 		
+		// eventually save the reminder once auth is built in
+		
 		response.status = 201
 		render '{"status":"success"}'
 	}

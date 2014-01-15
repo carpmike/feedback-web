@@ -5,11 +5,17 @@ import grails.rest.Resource;
 @Resource(uri='/feedbacks', formats=['json', 'xml'])
 class Feedback {
 
-	String text
-	Category category 
 	Person person 
+	Date date
+	FeedbackType feedbackType
+	Category category 
+	String text
 		
     static constraints = {
-		text blank:false
+		person blank:false
+		date blank:false
+		feedbackType blank:false
+		category blank:false
+		text blank:false		
     }
 }
