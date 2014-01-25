@@ -18,7 +18,17 @@ class ReminderController extends RestfulController {
 		def c = Category.get(reminder.categoryId)
 		assert c != null
 		
-		String message = "You need to provide $reminder.type feedback on $p.firstName $p.lastName for $c.name" 
+		def fbt = FeedbackType.get(reminder.feedbackTypeId)
+		assert fbt != null
+		
+		def today = new Date().format("MM/dd/yyyy")
+		
+		def f = new Feedback(category: c, person: p, feedbackType: fbt, date: today)
+		f.save(flush:true, failOnError:true)
+		
+		String url = "http://localhost:9191/#/people/$p.id/feedback/$f.id"
+		
+		String message = "You need to provide $fbt.name feedback on $p.firstName $p.lastName for $c.name. Click the link to do it: " + url 
 		
 		sendMail {
 			to "carpmike@gmail.com"

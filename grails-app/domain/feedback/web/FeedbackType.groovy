@@ -1,15 +1,10 @@
 package feedback.web;
 
-public enum FeedbackType {
-	POSITIVE("Positive"),
-	CONSTRUCTIVE("Constructive")
+public class FeedbackType {
 	
-	final String value
+	String name
 	
-	FeedbackType(String value) {
-		this.value = value;
+	static constraints = {
+		name inList: ["positive", "negative"]
 	}
-	
-	String toString() {value}
-	String getKey() {name()}
 }

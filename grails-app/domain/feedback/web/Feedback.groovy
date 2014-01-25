@@ -6,16 +6,12 @@ import grails.rest.Resource;
 class Feedback {
 
 	Person person 
-	Date date
+	String date
 	FeedbackType feedbackType
 	Category category 
 	String text
-		
-    static constraints = {
-		person blank:false
-		date blank:false
-		feedbackType blank:false
-		category blank:false
-		text blank:false		
-    }
+	
+	static constraints = {
+		text nullable: true
+	}
 }
