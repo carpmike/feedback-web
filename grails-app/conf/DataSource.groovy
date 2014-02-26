@@ -4,6 +4,8 @@ dataSource {
     pooled = true
     driverClassName = "com.mysql.jdbc.Driver"
     dialect = "org.hibernate.dialect.MySQL5InnoDBDialect"
+	logSql = true
+	formatSql = true
 }
 hibernate {
     cache.use_second_level_cache = true
@@ -16,7 +18,7 @@ hibernate {
 environments {
     development {
         dataSource {
-            dbCreate = "create" // one of 'create', 'create-drop', 'update', 'validate', ''
+            dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
             url = "jdbc:mysql://localhost/feedback?useUnicode=yes&characterEncoding=UTF-8"
 			username = "feedback_db"
 			password = "Fm1l0c0mAb"

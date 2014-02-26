@@ -14,4 +14,10 @@ class Feedback {
 	static constraints = {
 		text nullable: true
 	}
+	
+	static mapping = {
+		person lazy: false
+		feedbackType lazy: false
+		category lazy: false
+	}
 }

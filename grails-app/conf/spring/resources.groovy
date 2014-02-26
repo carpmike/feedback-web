@@ -1,8 +1,8 @@
-import feedback.web.Person;
-import grails.rest.render.hal.HalJsonRenderer
+import feedback.web.Feedback
+import grails.rest.render.xml.XmlRenderer
+import grails.rest.render.json.JsonRenderer
 
 // Place your Spring DSL code here
 beans = {
-	halPersonRenderer(HalJsonRenderer, Person)
 }
 
