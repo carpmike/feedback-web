@@ -28,10 +28,5 @@ class FeedbackController extends RestfulController<Feedback> {
 		}
 		respond results
 	}
-	
-	def show() {
-		System.out.println("Feedback show")
-		respond Feedback.findAll([fetch:[person:"eager"]])
-	}
 
 }
