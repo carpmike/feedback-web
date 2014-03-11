@@ -155,3 +155,45 @@ log4j = {
 		}
 	}
 }
+
+
+
+// Added by the Spring Security Core plugin:
+grails.plugin.springsecurity.securityConfigType = "InterceptUrlMap"
+
+grails.plugin.springsecurity.userLookup.userDomainClassName = 'feedback.web.User'
+grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'feedback.web.UserRole'
+grails.plugin.springsecurity.authority.className = 'feedback.web.Role'
+
+environments {
+	development {
+		// show 500 and error page if can't get to resource
+		grails.plugin.springsecurity.rejectIfNoRule = false
+		grails.plugin.springsecurity.fii.rejectPublicInvocations = true		
+	}
+	production {
+		// show a 403 error if can't get to resource
+		grails.plugin.springsecurity.rejectIfNoRule = true
+		grails.plugin.springsecurity.fii.rejectPublicInvocations = false
+	}
+}
+
+grails.plugin.springsecurity.interceptUrlMap = [
+	'/**/js/**':                    ['permitAll'],
+	'/**/css/**':                   ['permitAll'],
+	'/**/images/**':                ['permitAll'],
+	'/**/favicon.ico':              ['permitAll'],
+	'/login/**': 					['permitAll'],
+	'/logout/**': 					['permitAll'],
+	'/':                            ['IS_AUTHENTICATED_REMEMBERED', 'permitAll'],
+	'/index':                       ['IS_AUTHENTICATED_REMEMBERED', 'ROLE_ADMIN'],
+	'/index.gsp':                   ['IS_AUTHENTICATED_REMEMBERED', 'ROLE_ADMIN'],
+	'/categories/**': 				['IS_AUTHENTICATED_REMEMBERED', 'permitAll'],
+	'/feedbacks/**': 				['IS_AUTHENTICATED_REMEMBERED', 'permitAll'],
+	'/feedbacktypes/**':			['IS_AUTHENTICATED_REMEMBERED', 'permitAll'],
+	'/persons/**':					['IS_AUTHENTICATED_REMEMBERED', 'permitAll'],
+	'/reminder/**':					['IS_AUTHENTICATED_REMEMBERED', 'permitAll']
+]
+
+grails.plugin.springsecurity.useBasicAuth = true
+grails.plugin.springsecurity.basic.realmName = "Feedback"

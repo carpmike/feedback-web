@@ -34,7 +34,23 @@ class BootStrap {
 		[c1, fbt, f1, f2].each {
 			if (it.errors.allErrors.size() > 0) System.out.println("!!!! errors: " + it.errors)
 		}
-		
+
+		// security setup
+        def userRole = Role.findByAuthority('ROLE_USER') ?: new Role(authority: 'ROLE_USER').save(failOnError: true)
+        def adminRole = Role.findByAuthority('ROLE_ADMIN') ?: new Role(authority: 'ROLE_ADMIN').save(failOnError: true)
+
+		def adminUser = new User(username: 'admin', enabled: true, password: 'admin')
+		adminUser.save(flush: true)
+
+        if (!adminUser.authorities.contains(adminRole)) {
+            UserRole.create adminUser, adminRole, true
+        }
+
+		assert User.count() == 1
+		assert Role.count() == 2
+		assert UserRole.count() == 1		
+
+		// JSON mappings to get the output the way we want it *and* pre-fetch all the associations
 		JSON.registerObjectMarshaller(Feedback) { 
 			def fb = [:]
 			fb['text'] = it.text
