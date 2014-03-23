@@ -15,14 +15,14 @@ class FeedbackController extends RestfulController<Feedback> {
 	
     // override to get the associations
 	def index() {
-		System.out.println("Feedback index")
+		log.debug("Feedback index")
 		def results = Feedback.withCriteria {
 			fetchMode "person", FM.JOIN
 			fetchMode "category", FM.JOIN
 			fetchMode "feedbackType", FM.JOIN
 		}
 		results.each {
-			System.out.println it.person.firstName
+			log.debug("Got the feedback for : " + it.person.firstName)
 			it.category.name
 			it.feedbackType.name
 		}

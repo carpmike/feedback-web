@@ -3,7 +3,7 @@ package feedback.web
 import grails.rest.Resource;
 
 @Resource(uri='/categories', formats=['json', 'xml'])
-class Category {
+class Category extends UserDomain {
 
 	static hasMany = [feedbacks: Feedback]
 	

@@ -118,21 +118,23 @@ log4j = {
 			}
 		}
         console name:'stdout', layout:pattern(conversionPattern: '%d [%t] %-5p %c - %m%n')
+        error stdout: "StackTrace"
     }
 	
-	error  'org.codehaus',
-	'org.springframework',
-	'org.hibernate',
-	'net.sf.ehcache',
-	'org.grails.plugin',
-	'org.apache'
+	error  	'org.codehaus',
+			'org.springframework',
+			'org.hibernate',
+			'net.sf.ehcache',
+			'org.grails.plugin',
+			'org.apache'
 	
 	warn	'org.mortbay.log',
-	'grails.util',
-	'grails.plugin',
-	'grails.spring'
+			'grails.util',
+			'grails.plugin',
+			'grails.spring'
 	 
-	debug	'grails.app'
+	debug	'grails',
+			'feedback'
 	
 	environments {
 		development {
@@ -192,7 +194,7 @@ grails.plugin.springsecurity.interceptUrlMap = [
 	'/feedbacks/**': 				['IS_AUTHENTICATED_REMEMBERED', 'permitAll'],
 	'/feedbacktypes/**':			['IS_AUTHENTICATED_REMEMBERED', 'permitAll'],
 	'/persons/**':					['IS_AUTHENTICATED_REMEMBERED', 'permitAll'],
-	'/reminder/**':					['IS_AUTHENTICATED_REMEMBERED', 'permitAll']
+	'/reminders/**':					['IS_AUTHENTICATED_REMEMBERED', 'permitAll']
 ]
 
 grails.plugin.springsecurity.useBasicAuth = true

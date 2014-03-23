@@ -3,7 +3,7 @@ package feedback.web
 import grails.rest.Resource;
 
 @Resource(uri='/reminders', formats=['json', 'xml'])
-class Reminder {
+class Reminder extends UserDomain {
 
 	String personId
 	String categoryId

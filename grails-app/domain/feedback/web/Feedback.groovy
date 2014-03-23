@@ -3,7 +3,7 @@ package feedback.web
 import grails.rest.Resource;
 
 @Resource(uri='/feedbacks', formats=['json', 'xml'])
-class Feedback {
+class Feedback extends UserDomain {
 
 	Person person 
 	String date

@@ -4,8 +4,8 @@ dataSource {
     pooled = true
     driverClassName = "com.mysql.jdbc.Driver"
     dialect = "org.hibernate.dialect.MySQL5InnoDBDialect"
-	logSql = true
-	formatSql = true
+	// logSql = true
+	// formatSql = true
 }
 hibernate {
     cache.use_second_level_cache = true
