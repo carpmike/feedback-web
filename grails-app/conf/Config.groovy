@@ -123,6 +123,7 @@ log4j = {
 	
 	error  	'org.codehaus',
 			'org.springframework',
+			'org.springsource',
 			'org.hibernate',
 			'net.sf.ehcache',
 			'org.grails.plugin',
@@ -194,7 +195,7 @@ grails.plugin.springsecurity.interceptUrlMap = [
 	'/feedbacks/**': 				['IS_AUTHENTICATED_REMEMBERED', 'permitAll'],
 	'/feedbacktypes/**':			['IS_AUTHENTICATED_REMEMBERED', 'permitAll'],
 	'/persons/**':					['IS_AUTHENTICATED_REMEMBERED', 'permitAll'],
-	'/reminders/**':					['IS_AUTHENTICATED_REMEMBERED', 'permitAll']
+	'/reminders/**':				['IS_AUTHENTICATED_REMEMBERED', 'permitAll']
 ]
 
 grails.plugin.springsecurity.useBasicAuth = true

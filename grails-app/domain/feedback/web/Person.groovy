@@ -12,4 +12,9 @@ class Person extends UserDomain {
 		firstName blank:false 
 		lastName blank:false 
     }
+
+    static hibernateFilters = {
+        userFilter(condition: ':userId=user_id', types: 'long', default: false)
+    }    
+
 }

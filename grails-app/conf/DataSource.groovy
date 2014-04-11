@@ -1,11 +1,13 @@
-import javax.sql.PooledConnection;
+import javax.sql.PooledConnection
+import org.grails.plugin.hibernate.filter.HibernateFilterDomainConfiguration
 
 dataSource {
     pooled = true
     driverClassName = "com.mysql.jdbc.Driver"
     dialect = "org.hibernate.dialect.MySQL5InnoDBDialect"
-	// logSql = true
-	// formatSql = true
+    configClass = HibernateFilterDomainConfiguration
+	logSql = true
+	formatSql = true
 }
 hibernate {
     cache.use_second_level_cache = true
@@ -33,7 +35,7 @@ environments {
     production {
         dataSource {
 			pooled = false
-            dbCreate = "create" // need to change this and use grails' db migration tool when schema is stable
+            dbCreate = "create-drop" // need to change this and use grails' db migration tool when schema is stable
             jndiName = "java:comp/env/jdbc/feedback"
         }
     }

@@ -9,7 +9,8 @@ class UrlMappings {
 		
 		// for restful interface
 		"/reminders"(resources:'reminder', includes:['save'])
-		"/feedbacks"(resources:'feedback')
+        "/feedbacks"(resources:'feedback')
+		"/categories"(resources:'category')
 
         "/"(view:"/index")
         "500"(view:'/error')

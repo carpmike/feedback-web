@@ -20,4 +20,9 @@ class Feedback extends UserDomain {
 		feedbackType lazy: false
 		category lazy: false
 	}
+
+    static hibernateFilters = {
+        userFilter(condition: ':userId=user_id', types: 'long', default: false)
+    }    
+
 }
