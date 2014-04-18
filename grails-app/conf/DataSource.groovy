@@ -6,8 +6,6 @@ dataSource {
     driverClassName = "com.mysql.jdbc.Driver"
     dialect = "org.hibernate.dialect.MySQL5InnoDBDialect"
     configClass = HibernateFilterDomainConfiguration
-	logSql = true
-	formatSql = true
 }
 hibernate {
     cache.use_second_level_cache = true
@@ -24,6 +22,8 @@ environments {
             url = "jdbc:mysql://localhost/feedback?useUnicode=yes&characterEncoding=UTF-8"
 			username = "feedback_db"
 			password = "Fm1l0c0mAb"
+            logSql = true
+            formatSql = true            
         }
     }
     test {
@@ -35,7 +35,7 @@ environments {
     production {
         dataSource {
 			pooled = false
-            dbCreate = "create-drop" // need to change this and use grails' db migration tool when schema is stable
+            // dbCreate = "create" // need to change this and use grails' db migration tool when schema is stable
             jndiName = "java:comp/env/jdbc/feedback"
         }
     }
