@@ -134,8 +134,7 @@ log4j = {
 			'grails.plugin',
 			'grails.spring'
 	 
-	debug	'grails',
-			'feedback'
+	debug	'feedback'
 	
 	environments {
 		development {
@@ -198,5 +197,19 @@ grails.plugin.springsecurity.interceptUrlMap = [
 	'/reminders/**':				['IS_AUTHENTICATED_REMEMBERED', 'permitAll']
 ]
 
-grails.plugin.springsecurity.useBasicAuth = true
-grails.plugin.springsecurity.basic.realmName = "Feedback"
+// grails.plugin.springsecurity.useBasicAuth = true
+// grails.plugin.springsecurity.basic.realmName = "Feedback"
+
+// for the cors plugin
+cors.headers = ['Access-Control-Allow-Headers':'origin, authorization, accept, content-type, x-requested-with, x-auth-token']
+
+// authn handled by rest endopoint plugin
+grails.plugin.springsecurity.rest.login.endpointUrl = "/api/login"
+grails.plugin.springsecurity.rest.logout.endpointUrl = "/api/logout"
+grails.plugin.springsecurity.rest.login.failureStatusCode = 401
+grails.plugin.springsecurity.rest.login.useRequestParamsCredentials = false
+grails.plugin.springsecurity.rest.login.useJsonCredentials = true
+grails.plugin.springsecurity.rest.login.usernamePropertyName = "username"
+grails.plugin.springsecurity.rest.login.passwordPropertyName = "password"
+grails.plugin.springsecurity.rest.token.storage.useGorm = true
+grails.plugin.springsecurity.rest.token.storage.gorm.tokenDomainClassName = "feedback.web.AuthenticationToken"

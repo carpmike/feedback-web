@@ -10,7 +10,7 @@ class UserTenantFilters {
     def springSecurityService
 
     def filters = {
-        all(controller:'*', action:'*') {
+        all(uri: '/api/login', invert: true) {
             before = {
                 def loggedInUserId = springSecurityService.getCurrentUser().id
                 Category.enableHibernateFilter('userFilter').setParameter('userId', loggedInUserId)

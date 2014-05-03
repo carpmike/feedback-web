@@ -23,7 +23,7 @@ class BootStrap {
 				fb['person'] = p
 				def c = [:]
 				c['name'] = it.category.name
-				c['id'] = it.person.id
+				c['id'] = it.category.id
 				fb['category'] = c
 				def ft = [:]
 				ft['name'] = it.feedbackType.name
