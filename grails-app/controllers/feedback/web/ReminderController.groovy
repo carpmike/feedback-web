@@ -21,7 +21,7 @@ class ReminderController extends RestfulController {
 		def fbt = FeedbackType.get(reminder.feedbackTypeId)
 		assert fbt != null
 		
-		def today = new Date().format("MM/dd/yyyy")
+		def today = new Date().format("M/d/yyyy")
 		
 		def f = new Feedback(category: c, person: p, feedbackType: fbt, date: today)
 		f.save(flush:true, failOnError:true)
