@@ -158,8 +158,6 @@ log4j = {
 	}
 }
 
-
-
 // Added by the Spring Security Core plugin:
 grails.plugin.springsecurity.securityConfigType = "InterceptUrlMap"
 
@@ -213,3 +211,7 @@ grails.plugin.springsecurity.rest.login.usernamePropertyName = "username"
 grails.plugin.springsecurity.rest.login.passwordPropertyName = "password"
 grails.plugin.springsecurity.rest.token.storage.useGorm = true
 grails.plugin.springsecurity.rest.token.storage.gorm.tokenDomainClassName = "feedback.web.AuthenticationToken"
+
+// for database migrations
+grails.plugin.databasemigration.updateOnStart = true
+grails.plugin.databasemigration.updateOnStartFileNames = ['db_updates.groovy']

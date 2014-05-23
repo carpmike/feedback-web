@@ -1,6 +1,6 @@
 databaseChangeLog = {
 
-	changeSet(author: "mcarpenter (generated)", id: "1398116691080-1") {
+	changeSet(author: "mcarpenter (generated)", id: "1400420879112-1") {
 		createTable(tableName: "authentication_token") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
 				constraints(nullable: "false", primaryKey: "true", primaryKeyName: "authenticatioPK")
@@ -20,7 +20,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "mcarpenter (generated)", id: "1398116691080-2") {
+	changeSet(author: "mcarpenter (generated)", id: "1400420879112-2") {
 		createTable(tableName: "category") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
 				constraints(nullable: "false", primaryKey: "true", primaryKeyName: "categoryPK")
@@ -48,7 +48,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "mcarpenter (generated)", id: "1398116691080-3") {
+	changeSet(author: "mcarpenter (generated)", id: "1400420879112-3") {
 		createTable(tableName: "feedback") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
 				constraints(nullable: "false", primaryKey: "true", primaryKeyName: "feedbackPK")
@@ -90,7 +90,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "mcarpenter (generated)", id: "1398116691080-4") {
+	changeSet(author: "mcarpenter (generated)", id: "1400420879112-4") {
 		createTable(tableName: "feedback_type") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
 				constraints(nullable: "false", primaryKey: "true", primaryKeyName: "feedback_typePK")
@@ -106,7 +106,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "mcarpenter (generated)", id: "1398116691080-5") {
+	changeSet(author: "mcarpenter (generated)", id: "1400420879112-5") {
 		createTable(tableName: "person") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
 				constraints(nullable: "false", primaryKey: "true", primaryKeyName: "personPK")
@@ -138,7 +138,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "mcarpenter (generated)", id: "1398116691080-6") {
+	changeSet(author: "mcarpenter (generated)", id: "1400420879112-6") {
 		createTable(tableName: "reminder") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
 				constraints(nullable: "false", primaryKey: "true", primaryKeyName: "reminderPK")
@@ -174,7 +174,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "mcarpenter (generated)", id: "1398116691080-7") {
+	changeSet(author: "mcarpenter (generated)", id: "1400420879112-7") {
 		createTable(tableName: "role") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
 				constraints(nullable: "false", primaryKey: "true", primaryKeyName: "rolePK")
@@ -190,7 +190,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "mcarpenter (generated)", id: "1398116691080-8") {
+	changeSet(author: "mcarpenter (generated)", id: "1400420879112-8") {
 		createTable(tableName: "user") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
 				constraints(nullable: "false", primaryKey: "true", primaryKeyName: "userPK")
@@ -226,7 +226,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "mcarpenter (generated)", id: "1398116691080-9") {
+	changeSet(author: "mcarpenter (generated)", id: "1400420879112-9") {
 		createTable(tableName: "user_role") {
 			column(name: "role_id", type: "bigint") {
 				constraints(nullable: "false")
@@ -238,69 +238,69 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "mcarpenter (generated)", id: "1398116691080-10") {
+	changeSet(author: "mcarpenter (generated)", id: "1400420879112-10") {
 		addPrimaryKey(columnNames: "role_id, user_id", constraintName: "user_rolePK", tableName: "user_role")
 	}
 
-	changeSet(author: "mcarpenter (generated)", id: "1398116691080-16") {
+	changeSet(author: "mcarpenter (generated)", id: "1400420879112-16") {
 		createIndex(indexName: "FKF495EB858E22523D", tableName: "feedback") {
 			column(name: "category_id")
 		}
 	}
 
-	changeSet(author: "mcarpenter (generated)", id: "1398116691080-17") {
+	changeSet(author: "mcarpenter (generated)", id: "1400420879112-17") {
 		createIndex(indexName: "FKF495EB85B354939D", tableName: "feedback") {
 			column(name: "person_id")
 		}
 	}
 
-	changeSet(author: "mcarpenter (generated)", id: "1398116691080-18") {
+	changeSet(author: "mcarpenter (generated)", id: "1400420879112-18") {
 		createIndex(indexName: "FKF495EB85B76C51A8", tableName: "feedback") {
 			column(name: "feedback_type_id")
 		}
 	}
 
-	changeSet(author: "mcarpenter (generated)", id: "1398116691080-19") {
-		createIndex(indexName: "authority_uniq_1398116690812", tableName: "role", unique: "true") {
+	changeSet(author: "mcarpenter (generated)", id: "1400420879112-19") {
+		createIndex(indexName: "authority_uniq_1400420878922", tableName: "role", unique: "true") {
 			column(name: "authority")
 		}
 	}
 
-	changeSet(author: "mcarpenter (generated)", id: "1398116691080-20") {
-		createIndex(indexName: "username_uniq_1398116690818", tableName: "user", unique: "true") {
+	changeSet(author: "mcarpenter (generated)", id: "1400420879112-20") {
+		createIndex(indexName: "username_uniq_1400420878927", tableName: "user", unique: "true") {
 			column(name: "username")
 		}
 	}
 
-	changeSet(author: "mcarpenter (generated)", id: "1398116691080-21") {
+	changeSet(author: "mcarpenter (generated)", id: "1400420879112-21") {
 		createIndex(indexName: "FK143BF46A25FDDC9D", tableName: "user_role") {
 			column(name: "user_id")
 		}
 	}
 
-	changeSet(author: "mcarpenter (generated)", id: "1398116691080-22") {
+	changeSet(author: "mcarpenter (generated)", id: "1400420879112-22") {
 		createIndex(indexName: "FK143BF46A80D318BD", tableName: "user_role") {
 			column(name: "role_id")
 		}
 	}
 
-	changeSet(author: "mcarpenter (generated)", id: "1398116691080-11") {
+	changeSet(author: "mcarpenter (generated)", id: "1400420879112-11") {
 		addForeignKeyConstraint(baseColumnNames: "category_id", baseTableName: "feedback", constraintName: "FKF495EB858E22523D", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "category", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "mcarpenter (generated)", id: "1398116691080-12") {
+	changeSet(author: "mcarpenter (generated)", id: "1400420879112-12") {
 		addForeignKeyConstraint(baseColumnNames: "feedback_type_id", baseTableName: "feedback", constraintName: "FKF495EB85B76C51A8", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "feedback_type", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "mcarpenter (generated)", id: "1398116691080-13") {
+	changeSet(author: "mcarpenter (generated)", id: "1400420879112-13") {
 		addForeignKeyConstraint(baseColumnNames: "person_id", baseTableName: "feedback", constraintName: "FKF495EB85B354939D", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "person", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "mcarpenter (generated)", id: "1398116691080-14") {
+	changeSet(author: "mcarpenter (generated)", id: "1400420879112-14") {
 		addForeignKeyConstraint(baseColumnNames: "role_id", baseTableName: "user_role", constraintName: "FK143BF46A80D318BD", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "role", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "mcarpenter (generated)", id: "1398116691080-15") {
+	changeSet(author: "mcarpenter (generated)", id: "1400420879112-15") {
 		addForeignKeyConstraint(baseColumnNames: "user_id", baseTableName: "user_role", constraintName: "FK143BF46A25FDDC9D", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "user", referencesUniqueColumn: "false")
 	}
 }

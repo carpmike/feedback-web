@@ -18,7 +18,7 @@ hibernate {
 environments {
     development {
         dataSource {
-            dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
+            // dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
             url = "jdbc:mysql://localhost/feedback?useUnicode=yes&characterEncoding=UTF-8"
 			username = "feedback_db"
 			password = "Fm1l0c0mAb"
@@ -28,8 +28,10 @@ environments {
     }
     test {
         dataSource {
-            dbCreate = "create-drop"
-            url = "jdbc:mysql://localhost/DEVDBNAME?useUnicode=yes&characterEncoding=UTF-8"
+            // dbCreate = "create"
+            url = "jdbc:mysql://localhost/feedback_test?useUnicode=yes&characterEncoding=UTF-8"
+            username = "feedback_test"
+            password = "Fm1l0c0mAt"
         }
     }
     production {

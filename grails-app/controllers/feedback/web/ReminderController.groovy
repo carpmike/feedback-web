@@ -5,6 +5,8 @@ import grails.rest.RestfulController;
 
 class ReminderController extends RestfulController {
 
+	def springSecurityService //injected by spring
+
     static responseFormats = ['json', 'xml']
     ReminderController() {
         super(Reminder)
@@ -12,6 +14,8 @@ class ReminderController extends RestfulController {
 	
 	// this is really sending an email via POST
 	def save(Reminder reminder) {
+		def user = springSecurityService.getCurrentUser()
+
 		def p = Person.get(reminder.personId)
 		assert p != null
 		
@@ -31,7 +35,7 @@ class ReminderController extends RestfulController {
 		String message = "You need to provide $fbt.name feedback on $p.firstName $p.lastName for $c.name. Click the link to do it: " + url 
 		
 		sendMail {
-			to "carpmike@gmail.com"
+			to user.email
 			subject "Feedback reminder"
 			body message
 		}
