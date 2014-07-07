@@ -27,7 +27,7 @@ class ReminderController extends RestfulController {
 		
 		def today = new Date().format("M/d/yyyy")
 		
-		def f = new Feedback(category: c, person: p, feedbackType: fbt, date: today)
+		def f = new Feedback(category: c, person: p, feedbackType: fbt, date: today, given: false, text: reminder.text)
 		f.save(flush:true, failOnError:true)
 		
 		String url = "http://www.feedbock.co/#/feedback/$f.id"

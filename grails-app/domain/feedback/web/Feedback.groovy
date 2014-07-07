@@ -10,9 +10,11 @@ class Feedback extends UserDomain {
 	FeedbackType feedbackType
 	Category category 
 	String text
+	Boolean given
 	
 	static constraints = {
 		text nullable: true
+		given defaultValue: false
 	}
 	
 	static mapping = {

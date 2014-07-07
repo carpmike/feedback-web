@@ -16,6 +16,7 @@ class BootStrap {
 				fb['text'] = it.text
 				fb['date'] = it.date
 				fb['id'] = it.id
+				fb['given'] = it.given
 				def p = [:]
 				p['firstName'] = it.person.firstName
 				p['lastName'] = it.person.lastName

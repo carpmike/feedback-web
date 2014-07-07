@@ -8,6 +8,7 @@ class Reminder extends UserDomain {
 	String personId
 	String categoryId
 	String feedbackTypeId
+	String text
 		
     static constraints = {
 		personId blank:false

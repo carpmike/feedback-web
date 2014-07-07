@@ -213,5 +213,13 @@ grails.plugin.springsecurity.rest.token.storage.useGorm = true
 grails.plugin.springsecurity.rest.token.storage.gorm.tokenDomainClassName = "feedback.web.AuthenticationToken"
 
 // for database migrations
-grails.plugin.databasemigration.updateOnStart = true
-grails.plugin.databasemigration.updateOnStartFileNames = ['db_updates.groovy']
+environments {
+	development {
+		grails.plugin.databasemigration.updateOnStart = false
+		grails.plugin.databasemigration.updateOnStartFileNames = ['db_updates_07-07-2014.groovy']
+    }
+    production {
+		grails.plugin.databasemigration.updateOnStart = true
+		grails.plugin.databasemigration.updateOnStartFileNames = ['db_updates_07-07-2014.groovy']
+    }
+}
