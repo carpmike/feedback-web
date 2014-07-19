@@ -14,15 +14,17 @@ class FeedbackController extends RestfulController<Feedback> {
     }
 	
     // override to get the associations
-	def index() {
-		log.debug("Feedback index")
+	def index(Integer max) {
+		int m = Math.min(max ?: 100, 1000)
+		log.debug("Feedback index with max: " + m)
 		def results = Feedback.withCriteria {
 			fetchMode "person", FM.JOIN
 			fetchMode "category", FM.JOIN
 			fetchMode "feedbackType", FM.JOIN
+			maxResults(m)
 		}
 		results.each {
-			log.debug("Got the feedback for : " + it.person.firstName)
+			// log.debug("Got the feedback for : " + it.person.firstName)
 			it.category.name
 			it.feedbackType.name
 		}
