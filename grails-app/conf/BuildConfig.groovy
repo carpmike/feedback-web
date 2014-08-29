@@ -58,21 +58,22 @@ grails.project.dependency.resolution = {
         build ":tomcat:7.0.47"
 
         // plugins for the compile step
-        compile ":scaffolding:2.0.1"
-        compile ':cache:1.1.1'
-		compile ":mail:1.0.1"
+        compile ":scaffolding:2.1.0"
+        compile ":cache:1.1.3"
+		compile ":asset-pipeline:1.8.3"
+		compile ":mail:1.0.7"
 		// compile ":mongodb:1.3.3"
-        compile ":spring-security-core:2.0-RC2"
-        compile ":spring-security-rest:1.3.3", {
+        compile ":spring-security-core:2.0-RC4"
+        compile ":spring-security-rest:1.4.0", {
             excludes: 'spring-security-core'
         }
         compile ":hibernate-filter:0.3.2"
 
         // plugins needed at runtime but not for compilation
-        runtime ":hibernate:3.6.10.4" // or ":hibernate4:4.1.11.4"
+        runtime ":hibernate:3.6.10.14" // or ":hibernate4:4.1.11.4"
         runtime ":database-migration:1.4.0"
         // runtime ":jquery:1.10.2" 
-        runtime ":resources:1.2.1"
+        // runtime ":resources:1.2.1" should not be used
 		// runtime ":cors:1.1.3"
         // Uncomment these (or add new ones) to enable additional resources capabilities
         //runtime ":zipped-resources:1.0.1"

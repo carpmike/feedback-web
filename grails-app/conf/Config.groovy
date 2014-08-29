@@ -195,6 +195,10 @@ grails.plugin.springsecurity.interceptUrlMap = [
 	'/reminders/**':				['IS_AUTHENTICATED_REMEMBERED', 'permitAll']
 ]
 
+grails.plugin.springsecurity.filterChain.chainMap = [
+	'/**': 'JOINED_FILTERS,-exceptionTranslationFilter,-authenticationProcessingFilter,-securityContextPersistenceFilter'  // everything is stateless, there is no web page
+]
+
 // grails.plugin.springsecurity.useBasicAuth = true
 // grails.plugin.springsecurity.basic.realmName = "Feedback"
 
@@ -202,6 +206,7 @@ grails.plugin.springsecurity.interceptUrlMap = [
 cors.headers = ['Access-Control-Allow-Headers':'origin, authorization, accept, content-type, x-requested-with, x-auth-token']
 
 // authn handled by rest endopoint plugin
+grails.plugin.springsecurity.rest.token.validation.useBearerToken = false
 grails.plugin.springsecurity.rest.login.endpointUrl = "/api/login"
 grails.plugin.springsecurity.rest.logout.endpointUrl = "/api/logout"
 grails.plugin.springsecurity.rest.login.failureStatusCode = 401
