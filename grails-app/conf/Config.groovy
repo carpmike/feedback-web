@@ -216,10 +216,10 @@ grails.plugin.springsecurity.rest.token.storage.gorm.tokenDomainClassName = "fee
 environments {
 	development {
 		grails.plugin.databasemigration.updateOnStart = false
-		grails.plugin.databasemigration.updateOnStartFileNames = ['db_updates_07-07-2014.groovy']
+		grails.plugin.databasemigration.updateOnStartFileNames = ['db_updates_08-25-2014.groovy']
     }
     production {
 		grails.plugin.databasemigration.updateOnStart = false
-		grails.plugin.databasemigration.updateOnStartFileNames = ['db_updates_07-07-2014.groovy']
+		grails.plugin.databasemigration.updateOnStartFileNames = ['db_updates_08-25-2014.groovy']
     }
 }
