@@ -105,7 +105,7 @@ environments {
     }
     production {
         grails.logging.jul.usebridge = false
-        grails.serverURL = "http://feedback-web.carpmike.cloudbees.net"
+        grails.serverURL = "http://feedbock.elasticbeanstalk.com"
     }
 }
 
@@ -221,10 +221,10 @@ grails.plugin.springsecurity.rest.token.storage.gorm.tokenDomainClassName = "fee
 environments {
 	development {
 		grails.plugin.databasemigration.updateOnStart = false
-		grails.plugin.databasemigration.updateOnStartFileNames = ['db_updates_08-25-2014.groovy']
+		grails.plugin.databasemigration.updateOnStartFileNames = ['db_updates_08-29-2014.groovy']
     }
     production {
 		grails.plugin.databasemigration.updateOnStart = false
-		grails.plugin.databasemigration.updateOnStartFileNames = ['db_updates_08-25-2014.groovy']
+		grails.plugin.databasemigration.updateOnStartFileNames = ['db_updates_08-29-2014.groovy']
     }
 }

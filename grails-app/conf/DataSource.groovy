@@ -36,9 +36,21 @@ environments {
     }
     production {
         dataSource {
-			pooled = false
-            // dbCreate = "create" // need to change this and use grails' db migration tool when schema is stable
-            jndiName = "java:comp/env/jdbc/feedback"
+            username = "feedbockdb"
+            password = "Fm1l0c0mAb"
+            pooled = true
+            driverClassName = "com.mysql.jdbc.Driver"
+            url = "jdbc:mysql://aa1lqclsgwjugkf.crujaacepihh.us-east-1.rds.amazonaws.com:3306/cm_feedback?user=feedbockdb&password=Fm1l0c0mAb"
+            dialect = org.hibernate.dialect.MySQL5InnoDBDialect
+            properties {
+                validationQuery = "SELECT 1"
+                testOnBorrow = true
+                testOnReturn = true
+                testWhileIdle = true
+                timeBetweenEvictionRunsMillis = 1800000
+                numTestsPerEvictionRun = 3
+                minEvictableIdleTimeMillis = 1800000
+            }
         }
     }
 }

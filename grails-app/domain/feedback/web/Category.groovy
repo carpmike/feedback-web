@@ -2,12 +2,13 @@ package feedback.web
 
 import grails.rest.Resource
 
-@Resource(uri='/categories', formats=['json', 'xml'])
+@Resource(uri='/categories', formats=['json', 'xml'], superClass=UndeletableRestfulController)
 class Category extends UserDomain {
 
 	static hasMany = [feedbacks: Feedback]
 	
 	String name
+	Boolean isInactive = false
 	
     static constraints = {
 		name blank:false
