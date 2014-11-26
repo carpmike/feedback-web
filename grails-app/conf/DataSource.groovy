@@ -18,7 +18,7 @@ hibernate {
 environments {
     development {
         dataSource {
-            // dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
+            dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
             url = "jdbc:mysql://localhost/feedback?useUnicode=yes&characterEncoding=UTF-8"
 			username = "feedback_db"
 			password = "Fm1l0c0mAb"
