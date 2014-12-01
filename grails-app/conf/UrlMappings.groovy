@@ -8,10 +8,14 @@ class UrlMappings {
         }
 		
 		// for restful interface
-		"/reminders"(resources:'reminder', includes:['save'])
-        "/feedbacks"(resources:'feedback')
-		"/categories"(resources:'category')
-
+		"/api/reminders"(resources:'reminder', includes:['save'])
+		"/api/guest/users"(resources:'user', includes:['save'])		
+        "/api/feedbacks"(resources:'feedback')
+		"/api/categories"(resources:'category')
+		"/api/persons"(resources:'person')
+		"/api/feedbackTypes"(resources:'feedbackType')
+		
+		
         "/"(view:"/index")
         "500"(view:'/error')
 	}

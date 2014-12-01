@@ -179,6 +179,7 @@ environments {
 }
 
 grails.plugin.springsecurity.interceptUrlMap = [
+	'/api/guest/**': 				['permitAll'],
 	'/**/js/**':                    ['permitAll'],
 	'/**/css/**':                   ['permitAll'],
 	'/**/images/**':                ['permitAll'],
@@ -188,15 +189,17 @@ grails.plugin.springsecurity.interceptUrlMap = [
 	'/':                            ['IS_AUTHENTICATED_REMEMBERED', 'permitAll'],
 	'/index':                       ['IS_AUTHENTICATED_REMEMBERED', 'ROLE_ADMIN'],
 	'/index.gsp':                   ['IS_AUTHENTICATED_REMEMBERED', 'ROLE_ADMIN'],
-	'/categories/**': 				['IS_AUTHENTICATED_REMEMBERED', 'permitAll'],
-	'/feedbacks/**': 				['IS_AUTHENTICATED_REMEMBERED', 'permitAll'],
-	'/feedbacktypes/**':			['IS_AUTHENTICATED_REMEMBERED', 'permitAll'],
-	'/persons/**':					['IS_AUTHENTICATED_REMEMBERED', 'permitAll'],
-	'/reminders/**':				['IS_AUTHENTICATED_REMEMBERED', 'permitAll']
+	'/api/categories/**': 			['IS_AUTHENTICATED_REMEMBERED', 'permitAll'],
+	'/api/feedbacks/**': 			['IS_AUTHENTICATED_REMEMBERED', 'permitAll'],
+	'/api/feedbacktypes/**':		['IS_AUTHENTICATED_REMEMBERED', 'permitAll'],
+	'/api/persons/**':				['IS_AUTHENTICATED_REMEMBERED', 'permitAll'],
+	'/api/reminders/**':			['IS_AUTHENTICATED_REMEMBERED', 'permitAll']
 ]
-
+	
 grails.plugin.springsecurity.filterChain.chainMap = [
-	'/**': 'JOINED_FILTERS,-exceptionTranslationFilter,-authenticationProcessingFilter,-securityContextPersistenceFilter'  // everything is stateless, there is no web page
+	'/api/guest/**': 'anonymousAuthenticationFilter,restTokenValidationFilter,restExceptionTranslationFilter,filterInvocationInterceptor',
+	'/api/**': 'JOINED_FILTERS,-anonymousAuthenticationFilter,-exceptionTranslationFilter,-authenticationProcessingFilter,-securityContextPersistenceFilter,-rememberMeAuthenticationFilter',
+	'/**': 'JOINED_FILTERS,-restTokenValidationFilter,-restExceptionTranslationFilter'
 ]
 
 // grails.plugin.springsecurity.useBasicAuth = true
@@ -205,7 +208,7 @@ grails.plugin.springsecurity.filterChain.chainMap = [
 // for the cors plugin
 cors.headers = ['Access-Control-Allow-Headers':'origin, authorization, accept, content-type, x-requested-with, x-auth-token']
 
-// authn handled by rest endopoint plugin
+// authn handled by rest endpoint plugin
 grails.plugin.springsecurity.rest.token.validation.useBearerToken = false
 grails.plugin.springsecurity.rest.login.endpointUrl = "/api/login"
 grails.plugin.springsecurity.rest.logout.endpointUrl = "/api/logout"
@@ -216,6 +219,8 @@ grails.plugin.springsecurity.rest.login.usernamePropertyName = "username"
 grails.plugin.springsecurity.rest.login.passwordPropertyName = "password"
 grails.plugin.springsecurity.rest.token.storage.useGorm = true
 grails.plugin.springsecurity.rest.token.storage.gorm.tokenDomainClassName = "feedback.web.AuthenticationToken"
+
+grails.plugin.springsecurity.rest.token.validation.enableAnonymousAccess = true
 
 // for database migrations
 environments {

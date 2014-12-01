@@ -33,38 +33,36 @@ class BootStrap {
 
 				return fb
 			}
-				
-		 	// create the roles - first check if they are already there
-	         def userRole = Role.findByAuthority('ROLE_USER') ?: new Role(authority: 'ROLE_USER').save(failOnError: true)
-	         def adminRole = Role.findByAuthority('ROLE_ADMIN') ?: new Role(authority: 'ROLE_ADMIN').save(failOnError: true)
-
-	         // create the admin user
-		 	def adminUser = User.findByUsername('admin') ?: new User(username: 'admin', email: 'admin@feedbock.co', enabled: true, password: 'f33db0ck_admin').save(failOnError: true)
-		 	// adminUser.save(flush: true)
-
-	         if (!adminUser.authorities.contains(adminRole)) {
-	             UserRole.create adminUser, adminRole, true
-	         }
-
-	         // create my user
-		 	def mikeUser = User.findByUsername('mike') ?: new User(username: 'mike', email: 'carpmike@gmail.com', enabled: true, password: 'f33db0ck_mike').save(failOnError: true)
-		 	// mikeUser.save(flush: true)
-
-	         if (!mikeUser.authorities.contains(userRole)) {
-	             UserRole.create mikeUser, userRole, true
-	         }
-
-		 	assert User.count() == 2
-		 	assert Role.count() == 2
-		 	assert UserRole.count() == 2	
-			
-		 	def fbt = FeedbackType.findByName('positive') ?:new FeedbackType(name:"positive").save(failOnError: true)
-		 	FeedbackType.findByName('constructive') ?:new FeedbackType(name:"constructive").save(failOnError: true)
-			
-		 	assert FeedbackType.count() == 2
 
      		development {
-
+				 // create the roles - first check if they are already there
+				 def userRole = Role.findByAuthority('ROLE_USER') ?: new Role(authority: 'ROLE_USER').save(failOnError: true)
+				 def adminRole = Role.findByAuthority('ROLE_ADMIN') ?: new Role(authority: 'ROLE_ADMIN').save(failOnError: true)
+	
+				 // create the admin user
+				 def adminUser = User.findByUsername('admin') ?: new User(username: 'admin', email: 'admin@feedbock.co', enabled: true, password: 'f33db0ck_admin').save(failOnError: true)
+				 // adminUser.save(flush: true)
+	
+				 if (!adminUser.authorities.contains(adminRole)) {
+					 UserRole.create adminUser, adminRole, true
+				 }
+	
+				 // create my user
+				 def mikeUser = User.findByUsername('mike') ?: new User(username: 'mike', email: 'carpmike@gmail.com', enabled: true, password: 'f33db0ck_mike').save(failOnError: true)
+				 // mikeUser.save(flush: true)
+	
+				 if (!mikeUser.authorities.contains(userRole)) {
+					 UserRole.create mikeUser, userRole, true
+				 }
+	
+				 assert User.count() == 2
+				 assert Role.count() == 2
+				 assert UserRole.count() == 2
+				
+				 def fbt = FeedbackType.findByName('positive') ?:new FeedbackType(name:"positive").save(failOnError: true)
+				 FeedbackType.findByName('constructive') ?:new FeedbackType(name:"constructive").save(failOnError: true)
+				
+				 assert FeedbackType.count() == 2
 		 		// remaining is for dev env only
 		 		def p1 = new Person(firstName:"Sug", lastName:"Arun", userId: mikeUser.id).save()
 		 		new Person(firstName:"B", lastName:"North", userId: mikeUser.id).save()

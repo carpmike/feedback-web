@@ -10,7 +10,7 @@ class UserTenantFilters {
     def springSecurityService
 
     def filters = {
-        all(uri: '/api/login', invert: true) {
+        all(uri: '/api/guest/**', invert: true) {
             before = {
                 def loggedInUserId = springSecurityService.getCurrentUser().id
 				println "got the user id: " + loggedInUserId
